@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/naviBottomHome" android:title="Trang chủ" android:icon="@drawable/home"/>
+    <item android:id="@+id/naviBottomOrders" android:title="Lịch khám" android:icon="@drawable/date"/>
+    <item android:id="@+id/naviBottomNotify" android:title="Thông báo" android:icon="@drawable/notify"/>
+    <item android:id="@+id/naviBottomUser" android:title="Cá nhân" android:icon="@drawable/user"/>
+</menu>

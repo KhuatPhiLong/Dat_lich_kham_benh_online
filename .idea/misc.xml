@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_add_doctor.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_add_serivce.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_manager_categories.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_manager_doctor.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_manager_rooms.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_manager_service.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_pro_file_user.xml" value="0.3484375" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_register.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_regster_doctor.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_update_service.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_add_manager_categories.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_add_manager_rooms.xml" value="0.3567708333333333" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_add_manager_service.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_add_service.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_update_manager_categories.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_update_manager_rooms.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/fragment_notify.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/fragment_orders.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/fragment_user.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_categories.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_docotr.xml" value="0.23697916666666666" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_doctor.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_room.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_service.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_sp_categories.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_sp_room.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_sp_service.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/menu/menu_navibottom.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

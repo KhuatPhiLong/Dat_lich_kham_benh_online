@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#0277BD"
+        android:text="Sửa dịch vụ khám"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        />
+    <ImageView
+        android:id="@+id/imgUpdateService"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/add_image"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/edUpdateNameService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+    <EditText
+        android:id="@+id/edUpdatePriceService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá dịch vụ"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phòng khám"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        />
+    <Spinner
+        android:id="@+id/spUpdateCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+    <Button
+        android:id="@+id/btnUpdateSaveService"
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0277BD"
+        android:text="Lưu"
+        android:layout_marginTop="30dp"/>
+</LinearLayout>
