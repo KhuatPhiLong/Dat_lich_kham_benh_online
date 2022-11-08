@@ -56,6 +56,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder
                     listCategories.remove(dtoCategories);
                     notifyDataSetChanged();
                     Toast.makeText(context, "Xóa thành công loại khám", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Long chinh sua", Toast.LENGTH_SHORT).show();
                 }
             }
         });
