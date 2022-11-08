@@ -21,5 +21,6 @@ public class DoctorViewHolder extends RecyclerView.ViewHolder {
         tvNameDescription = itemView.findViewById(R.id.tvNameDescription);
         tvDeleteDoctor = itemView.findViewById(R.id.tvDeleteDoctor);
         tvUpdateDoctor = itemView.findViewById(R.id.tvUpdateDoctor);
+        imgDoctor = itemView.findViewById(R.id.imgDoctor);
     }
 }

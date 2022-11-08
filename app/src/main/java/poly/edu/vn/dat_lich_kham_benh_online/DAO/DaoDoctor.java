@@ -52,7 +52,6 @@ public class DaoDoctor {
         int res = db.update(DtoDoctor.nameTable, val, "id = ?", check);
         return res;
     }
-
     public ArrayList<DtoDoctor> selectAll() {
         ArrayList<DtoDoctor> listDoctor = new ArrayList<>();
         Cursor cs = db.query(DtoDoctor.nameTable, null, null, null, null, null, null);
