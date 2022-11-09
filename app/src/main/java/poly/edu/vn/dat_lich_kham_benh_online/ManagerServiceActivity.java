@@ -59,9 +59,7 @@ public class ManagerServiceActivity extends AppCompatActivity {
             Intent intent = new Intent(getBaseContext(),AddSerivceActivity.class);
             startActivity(intent);
         });
-
     }
-
     public void init(){
         tvAddService = findViewById(R.id.tvAddService);
         rvManagerService = findViewById(R.id.rvManagerService);

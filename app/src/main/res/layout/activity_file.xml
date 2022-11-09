@@ -103,6 +103,12 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="Địa chỉ"/>
+    <Button
+        android:id="@+id/btnSaveFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Lưu"/>
 
 
 </LinearLayout>

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ public class FileActivity extends AppCompatActivity {
     private TextView tvFullName,tvPhone,tvGender;
     private DaoAccount daoAccount;
     private ImageView imgAccount;
+    private Button btnSaveFile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +46,18 @@ public class FileActivity extends AppCompatActivity {
             Uri uri = Uri.parse(getDtoAccount.getImg());
             imgAccount.setImageURI(uri);
         }
+        btnSaveFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
     public void init(){
         tvFullName = findViewById(R.id.tvFullName);
         tvPhone = findViewById(R.id.tvPhone);
         tvGender = findViewById(R.id.tvGender);
         imgAccount = findViewById(R.id.imgAccount);
+        btnSaveFile = findViewById(R.id.btnSaveFile);
     }
 }

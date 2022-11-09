@@ -50,7 +50,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceViewHolder> {
         holder.tvNameService.setText(dtoService.getName());
         DtoCategories dtoCategories = daoCategories.getDtoCategories(dtoService.getCategories_id());
         holder.tvCategories.setText(dtoCategories.getName());
-        Uri uri = Uri.parse(dtoService.getImg().toString());
+        Uri uri = Uri.parse(dtoService.getImg());
         holder.imgService.setImageURI(uri);
         holder.tvDeleteService.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceViewHolder> {
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return listService.size();
