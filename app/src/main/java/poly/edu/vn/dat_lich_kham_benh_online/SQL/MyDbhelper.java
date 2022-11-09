@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDbhelper extends SQLiteOpenHelper {
     public static final String NAME ="Kham_benh_online";
-    public static final int VERSION = 27;
+    public static final int VERSION = 28;
     public MyDbhelper(Context context){
         super(context,NAME,null,VERSION);
     }
@@ -30,7 +30,7 @@ public class MyDbhelper extends SQLiteOpenHelper {
         String sqlCategories = "CREATE TABLE tbCategories (id INTEGER NOT NULL,name INTEGER NOT NULL,PRIMARY KEY(id AUTOINCREMENT));";
         sqLiteDatabase.execSQL(sqlCategories);
 
-        String sqlFile = "CREATE TABLE tbFile (id INTEGER NOT NULL,user_id INTEGER REFERENCES tbUser(id),birthday TEXT NOT NULL,cccd TEXT NOT NULL,country TEXT NOT NULL,bhyt TEXT NOT NULL,job TEXT NOT NULL,email TEXT NOT NULL,address TEXT NOT NULL,PRIMARY KEY( id  AUTOINCREMENT));";
+        String sqlFile = "CREATE TABLE tbFile (id INTEGER NOT NULL,user_id INTEGER REFERENCES tbAccount(id),birthday TEXT NOT NULL,cccd TEXT NOT NULL,country TEXT NOT NULL,bhyt TEXT NOT NULL,job TEXT NOT NULL,email TEXT NOT NULL,address TEXT NOT NULL,PRIMARY KEY( id  AUTOINCREMENT));";
         sqLiteDatabase.execSQL(sqlFile);
 
         String sqlTimeWork = "CREATE TABLE  tbTimeWork  (id  INTEGER NOT NULL,session  TEXT NOT NULL,PRIMARY KEY( id  AUTOINCREMENT));";

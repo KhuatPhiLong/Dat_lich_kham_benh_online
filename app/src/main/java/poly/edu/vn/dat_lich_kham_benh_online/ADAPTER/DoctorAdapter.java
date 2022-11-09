@@ -60,11 +60,11 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorViewHolder> {
         holder.imgDoctor.setImageURI(uri);
 
         DtoRoom dtoRoom = daoRoom.getDtoRoom(dtoDoctor.getRoom_id());
-        holder.tvNameRoom.setText(dtoRoom.getName());
+        holder.tvNameRoom.setText("Phòng khám: "+dtoRoom.getName());
 
         holder.tvNameService.setText(dtoDoctor.getService_id()+"");
-        DtoService dtoService = daoService.getDtoSeriveById(1);
-        holder.tvNameService.setText(dtoService.getName());
+        DtoService dtoService = daoService.getDtoSeriveById(dtoDoctor.getService_id());
+        holder.tvNameService.setText("Dịch vụ khám: "+dtoService.getName());
         holder.tvDescription.setText(dtoDoctor.getDescription());
         
         holder.tvDeleteDoctor.setOnClickListener(new View.OnClickListener() {

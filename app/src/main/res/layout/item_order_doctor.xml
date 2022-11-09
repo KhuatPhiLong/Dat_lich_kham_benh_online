@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgDoctor"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/img" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvNameDoctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#0277BD"
+                android:text="Khuat Phi Long"/>
+            <TextView
+                android:id="@+id/tvDesDoctor"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:text="Nguyên trưởng khoa Cơ xương khớp , Bệnh viện E Hà nội\n Được phong tặng danh hiệu thầy thuốc ưu túlakfj"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvOrderSerivce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Khám xương"
+        android:layout_marginLeft="20dp"
+        android:textColor="#283593"/>
+    <TextView
+        android:id="@+id/tvOrderRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phòng : p1"
+        android:layout_marginLeft="20dp"
+        android:textColor="#283593"/>
+    <TextView
+        android:id="@+id/tvTimeWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ca khám"
+        android:layout_marginLeft="20dp"
+        />
+    <TextView
+        android:id="@+id/tvPriceService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá khám: "
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:textColor="#F30606"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/date"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lịch Khám"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTimeWorkDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn h để đặt lịch khám"
+        android:layout_marginLeft="20dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"/>
+
+</LinearLayout>

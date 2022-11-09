@@ -62,4 +62,23 @@ public class DaoTimeWorkDetail {
         }
         return listTimeWorkDetail;
     }
+
+    public ArrayList<DtoTimeWorkDetail> selectTimeWorkDetailByTimeWorkId(int idTimeWork){
+        ArrayList<DtoTimeWorkDetail> listTimeWorkDetail = new ArrayList<>();
+        String where = "timework_id = ?";
+        String[] whereArgs = new String[]{idTimeWork+""};
+        Cursor cs = db.query(DtoTimeWorkDetail.nameTable,null,where,whereArgs,null,null,null);
+        if(cs.moveToFirst()){
+            while(!cs.isAfterLast()){
+                DtoTimeWorkDetail dtoTimeWorkDetail = new DtoTimeWorkDetail();
+                dtoTimeWorkDetail.setId(cs.getInt(0));
+                dtoTimeWorkDetail.setTimework_id(cs.getInt(1));
+                dtoTimeWorkDetail.setTime(cs.getString(2));
+
+                listTimeWorkDetail.add(dtoTimeWorkDetail);
+                cs.moveToNext();
+            }
+        }
+        return listTimeWorkDetail;
+    }
 }

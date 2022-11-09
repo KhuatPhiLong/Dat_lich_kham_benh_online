@@ -30,6 +30,7 @@ public class DaoFile {
         val.put(DtoFile.colJob,dtoFile.getJob());
         val.put(DtoFile.colEmail,dtoFile.getEmail());
         val.put(DtoFile.colAddress,dtoFile.getAddress());
+        val.put(DtoFile.colCountry,dtoFile.getCountry());
         long res = db.insert(DtoFile.nameTable,null,val);
         return res;
     }
@@ -47,6 +48,7 @@ public class DaoFile {
         val.put(DtoFile.colJob,dtoFile.getJob());
         val.put(DtoFile.colEmail,dtoFile.getEmail());
         val.put(DtoFile.colAddress,dtoFile.getAddress());
+        val.put(DtoFile.colCountry,dtoFile.getCountry());
         String[] check = new String[]{dtoFile.getId()+""};
         int res = db.update(DtoFile.nameTable,val,"id = ?",check);
         return res;
@@ -73,12 +75,12 @@ public class DaoFile {
         }
         return listFile;
     }
-    public DtoFile dtoFile(int idFile){
+    public DtoFile dtoFile(int idFile) {
         DtoFile dtoFile = new DtoFile();
         String where = "id = ?";
-        String[] whereArgs = {idFile+""};
-        Cursor cs  =db.query(DtoFile.nameTable,null, where,whereArgs,null,null,null);
-        if(cs.moveToFirst()){
+        String[] whereArgs = {idFile + ""};
+        Cursor cs = db.query(DtoFile.nameTable, null, where, whereArgs, null, null, null);
+        if (cs.moveToFirst()) {
             dtoFile.setId(cs.getInt(0));
             dtoFile.setUser_id(cs.getInt(1));
             dtoFile.setBirthday(cs.getString(2));
@@ -89,9 +91,36 @@ public class DaoFile {
             dtoFile.setEmail(cs.getString(7));
             dtoFile.setCountry(cs.getString(8));
         }
-            return dtoFile;
+        return dtoFile;
     }
 
-
-
+    public boolean checkFileByIdAcount(int idAccount){
+        String[] selectArgs = new String[]{idAccount+""};
+        String select = "SELECT tbFile.id,tbFile.user_id,tbFile.birthday,tbFile.cccd,tbFile.country,tbFile.bhyt,tbFile.job,tbFile.email,tbFile.address from tbFile INNER JOIN  tbAccount on tbAccount.id = tbFile.user_id where tbAccount.id = ?";
+        Cursor cs = db.rawQuery(select,selectArgs);
+        if(cs.getCount()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public DtoFile getDtoFileByIdAccount(int idAccount){
+        DtoFile dtoFile = new DtoFile();
+        String[] selectArgs = new String[]{idAccount+""};
+        String select = "SELECT tbFile.id,tbFile.user_id,tbFile.birthday,tbFile.cccd,tbFile.country,tbFile.bhyt,tbFile.job,tbFile.email,tbFile.address from tbFile INNER JOIN  tbAccount on tbAccount.id = tbFile.user_id where tbAccount.id = ?";
+        Cursor cs = db.rawQuery(select,selectArgs);
+        if (cs.moveToFirst()) {
+            dtoFile.setId(cs.getInt(0));
+            dtoFile.setUser_id(cs.getInt(1));
+            dtoFile.setBirthday(cs.getString(2));
+            dtoFile.setCccd(cs.getString(3));
+            dtoFile.setCountry(cs.getString(4));
+            dtoFile.setBhyt(cs.getString(5));
+            dtoFile.setJob(cs.getString(6));
+            dtoFile.setEmail(cs.getString(7));
+            dtoFile.setAddress(cs.getString(8));
+        }
+        return dtoFile;
+    }
 }

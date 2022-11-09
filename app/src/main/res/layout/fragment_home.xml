@@ -10,4 +10,15 @@
         android:background="#0277BD"
         app:title="Trang chủ"
         app:titleTextColor="#fff"/>
+    <Button
+        android:id="@+id/btnListDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bác sĩ"
+        android:layout_gravity="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Các dịch vụ khám"
+        android:layout_gravity="center"/>
 </LinearLayout>

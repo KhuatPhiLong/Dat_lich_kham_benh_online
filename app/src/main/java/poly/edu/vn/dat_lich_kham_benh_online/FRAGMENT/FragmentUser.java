@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoAccount;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoAccount;
+import poly.edu.vn.dat_lich_kham_benh_online.AddFileActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.FileActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.ManagerCategoriesActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.ManagerDoctorActivity;

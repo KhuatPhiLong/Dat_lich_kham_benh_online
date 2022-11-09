@@ -3,11 +3,14 @@ package poly.edu.vn.dat_lich_kham_benh_online;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -63,9 +66,17 @@ public class AddSerivceActivity extends AppCompatActivity {
 
         //Bắt sự kiện cho imgService để mở thư viện lấy ảnh
         imgService.setOnClickListener(view->{
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            startActivityForResult(intent,1);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (AddSerivceActivity.this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                    requestPermissions(permissions, 1);
+                }
+                else {
+                    Intent intentGrallary = new Intent(Intent.ACTION_PICK);
+                    intentGrallary.setType("image/*");
+                    startActivityForResult(intentGrallary,1);
+                }
+            }
         });
         //Lấy ra danh sách
         ArrayList<DtoService> listServie = daoService.selectAll();

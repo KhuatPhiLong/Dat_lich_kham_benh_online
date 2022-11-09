@@ -14,6 +14,7 @@ public class DtoFile {
     public static final String nameTable = "tbFile";
     public static final String colUserId = "user_id";
     public static final String colBirthday= "birthday";
+    public static final String colCountry = "country";
     public static final String colCccd = "cccd";
     public static final String colBhyt = "bhyt";
     public static final String colJob = "job";
@@ -105,5 +106,20 @@ public class DtoFile {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "DtoFile{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", birthday='" + birthday + '\'' +
+                ", cccd='" + cccd + '\'' +
+                ", country='" + country + '\'' +
+                ", bhyt='" + bhyt + '\'' +
+                ", job='" + job + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

@@ -63,4 +63,9 @@ public class ManagerDoctorActivity extends AppCompatActivity {
         rvManagerDoctor.setLayoutManager(manager);
         rvManagerDoctor.setAdapter(doctorAdapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

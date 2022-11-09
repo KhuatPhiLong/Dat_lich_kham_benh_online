@@ -104,13 +104,12 @@ public class AddDoctorActivity extends AppCompatActivity {
                         requestPermissions(permissions, 1);
                     }
                     else {
-                        Intent intent = new Intent(AddDoctorActivity.this, ProFileUserActivity.class);
-                        startActivity(intent);
+                        Intent intentGrallary = new Intent(Intent.ACTION_PICK);
+                        intentGrallary.setType("image/*");
+                        startActivityForResult(intentGrallary,1);
                     }
                 }
-                Intent intentGrallary = new Intent(Intent.ACTION_PICK);
-                intentGrallary.setType("image/*");
-                startActivityForResult(intentGrallary,1);
+
             }
         });
 
@@ -188,7 +187,6 @@ public class AddDoctorActivity extends AppCompatActivity {
             imgDoctor.setImageURI(uri);
         }
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
