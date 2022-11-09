@@ -21,18 +21,21 @@ import androidx.fragment.app.Fragment;
 
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoAccount;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoAccount;
+import poly.edu.vn.dat_lich_kham_benh_online.FileActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.ManagerCategoriesActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.ManagerDoctorActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.ManagerRoomsActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.ManagerServiceActivity;
+import poly.edu.vn.dat_lich_kham_benh_online.ManagerTimeWorkActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.ProFileUserActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.R;
+import poly.edu.vn.dat_lich_kham_benh_online.ManagerTimeWorkDetailActivity;
 
 public class FragmentUser extends Fragment {
-    private DaoAccount daoUser;
+    private DaoAccount daoAccount;
     private ImageView imgUser;
-    private TextView tvFullNameUser;
-    private Button btnManagerDoctor,btnManaerService,btnManagerCategories,btnManagerRooms;
+    private TextView tvFullNameUser,tvRole;
+    private Button btnManagerDoctor,btnManaerService,btnManagerCategories,btnManagerRooms,btnManagerTimeWorkDetail,btnManagerTimeWork,btnFile;
 
     @Nullable
     @Override
@@ -48,35 +51,75 @@ public class FragmentUser extends Fragment {
         btnManaerService = view.findViewById(R.id.btnManaerService);
         btnManagerCategories = view.findViewById(R.id.btnManagerCategories);
         btnManagerRooms = view.findViewById(R.id.btnManagerRooms);
+        btnManagerTimeWorkDetail = view.findViewById(R.id.btnManagerTimeWorkDetail);
+        btnManagerTimeWork = view.findViewById(R.id.btnManagerTimeWork);
+        btnFile = view.findViewById(R.id.btnFile);
+        tvRole = view.findViewById(R.id.tvRole);
 
         //Khởi tạo cơ sở dữ liệu
-        daoUser = new DaoAccount(getActivity());
+        daoAccount = new DaoAccount(getActivity());
         //Mở cơ sở dữ liệu
-        daoUser.open();
+        daoAccount.open();
         //Lấy ra id của tài khoản đăng nhập
         SharedPreferences preferences = getActivity().getSharedPreferences("getIdUser", Context.MODE_PRIVATE);
         int idUser = preferences.getInt("idUser", -1);
         //lấy ra đối tượng có idUser
-        DtoAccount getDtoUser = daoUser.getDtoUser(idUser);
+        DtoAccount getDtoAccount = daoAccount.getDtoAccount(idUser);
+        tvRole.setText("Tài khoản là : "+getDtoAccount.getRole());
 
-        if(getDtoUser.getRole().equals("User")){
+        if(getDtoAccount.getRole().equals("User")){
             btnManagerCategories.setVisibility(View.GONE);
             btnManaerService.setVisibility(View.GONE);
             btnManagerRooms.setVisibility(View.GONE);
             btnManagerDoctor.setVisibility(View.GONE);
+            btnManagerTimeWork.setVisibility(View.GONE);
+            btnManagerTimeWorkDetail.setVisibility(View.GONE);
+            btnFile.setVisibility(View.VISIBLE);
         }
-        else if(getDtoUser.getRole().equals("Doctor")){
+        else if(getDtoAccount.getRole().equals("Doctor")){
             btnManagerCategories.setVisibility(View.GONE);
             btnManaerService.setVisibility(View.GONE);
             btnManagerRooms.setVisibility(View.GONE);
             btnManagerDoctor.setVisibility(View.GONE);
+            btnManagerTimeWork.setVisibility(View.GONE);
+            btnManagerTimeWorkDetail.setVisibility(View.GONE);
+            btnFile.setVisibility(View.GONE);
         }
-        else if(getDtoUser.getRole().equals("Admin")){
+        else if(getDtoAccount.getRole().equals("Admin")){
             btnManagerCategories.setVisibility(View.VISIBLE);
             btnManaerService.setVisibility(View.VISIBLE);
             btnManagerRooms.setVisibility(View.VISIBLE);
             btnManagerDoctor.setVisibility(View.VISIBLE);
+            btnManagerTimeWork.setVisibility(View.VISIBLE);
+            btnManagerTimeWorkDetail.setVisibility(View.VISIBLE);
+            btnFile.setVisibility(View.GONE);
         }
+        //Bắt sự kiện bấm vào
+        btnFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), FileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Bắt sự kiện bấm vào btnManagerTimeWorkDetail
+        btnManagerTimeWorkDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ManagerTimeWorkDetailActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Bắt sự kiện bấm vào quản lí time work
+        btnManagerTimeWork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ManagerTimeWorkActivity.class);
+                startActivity(intent);
+            }
+        });
         //Bắt sự kiện bấm vào quản lí bác sĩ
         btnManagerDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,12 +170,12 @@ public class FragmentUser extends Fragment {
             }
         });
 
-        if (getDtoUser.getImg() != null) {
+        if (getDtoAccount.getImg() != null) {
             //Ép kiểu dữ liệu từ string sang uri
-            Uri uri = Uri.parse(getDtoUser.getImg().trim());
+            Uri uri = Uri.parse(getDtoAccount.getImg().trim());
             imgUser.setImageURI(uri);
         }
-        tvFullNameUser.setText(getDtoUser.getFullName());
+        tvFullNameUser.setText(getDtoAccount.getFullName());
 
     }
 
@@ -142,10 +185,10 @@ public class FragmentUser extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("getIdUser", Context.MODE_PRIVATE);
         int idUser = preferences.getInt("idUser", -1);
         //lấy ra đối tượng có idUser
-        DtoAccount getDtoUser = daoUser.getDtoUser(idUser);
-        if (getDtoUser.getImg() != null) {
+        DtoAccount getDtoAccount = daoAccount.getDtoAccount(idUser);
+        if (getDtoAccount.getImg() != null) {
             //Ép kiểu dữ liệu từ string sang uri
-            Uri uri = Uri.parse(getDtoUser.getImg().trim());
+            Uri uri = Uri.parse(getDtoAccount.getImg().trim());
             imgUser.setImageURI(uri);
         }
     }

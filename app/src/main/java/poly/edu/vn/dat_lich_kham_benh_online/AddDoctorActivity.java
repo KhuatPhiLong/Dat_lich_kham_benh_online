@@ -3,8 +3,11 @@ package poly.edu.vn.dat_lich_kham_benh_online;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,25 +21,29 @@ import java.util.ArrayList;
 
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.SpinnerRoomAdapter;
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.SpinnerServiceAdapter;
+import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.SpinnerTimeWorkAdapter;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoDoctor;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoRoom;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoService;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoAccount;
+import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoDoctor;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoRoom;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoService;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoAccount;
+import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWork;
 
 public class AddDoctorActivity extends AppCompatActivity {
     private ImageView imgDoctor;
     private EditText edFullName,edPhone,edPassWord,edUserName,edDescription,edBirthDay;
     private RadioButton rdoMen,rdoGirl;
-    private Spinner spRooms,spServices;
+    private Spinner spRooms,spServices,spTimeWork;
     private DaoRoom daoRoom;
     private Button btnSaveDoctor;
     private DaoService daoService;
     private DaoAccount daoUser;
     private DaoDoctor daoDoctor;
+    private DaoTimWork daoTimWork;
     private String uriImg;
     private String TAG = "zzzzzzzzzzzzzzz";
     @Override
@@ -44,6 +51,11 @@ public class AddDoctorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_doctor);
         init();
+        //Khởi tạo
+        daoTimWork = new DaoTimWork(this);
+        //Mở cơ sở dữ liệu
+        daoTimWork.open();
+
         //Khởi tạo
         daoDoctor = new DaoDoctor(this);
         //Mở cơ sở dữ liệu
@@ -64,6 +76,12 @@ public class AddDoctorActivity extends AppCompatActivity {
         //Mở cớ sở dữ liệu
          daoService.open();
 
+         //Lấy ra danh sách ca
+        ArrayList<DtoTimeWork> listTimeWork = daoTimWork.selectAll();
+        //Gắn dữ liệu vào spTimeWork
+        SpinnerTimeWorkAdapter spinnerTimeWorkAdapter = new SpinnerTimeWorkAdapter(listTimeWork,this);
+        spTimeWork.setAdapter(spinnerTimeWorkAdapter);
+
          //Lấy ra danh sách phòng khám
         ArrayList<DtoRoom> listRoom = daoRoom.selectAll();
         //Gắn dữ liệu vào spRooms
@@ -80,6 +98,16 @@ public class AddDoctorActivity extends AppCompatActivity {
         imgDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (AddDoctorActivity.this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, 1);
+                    }
+                    else {
+                        Intent intent = new Intent(AddDoctorActivity.this, ProFileUserActivity.class);
+                        startActivity(intent);
+                    }
+                }
                 Intent intentGrallary = new Intent(Intent.ACTION_PICK);
                 intentGrallary.setType("image/*");
                 startActivityForResult(intentGrallary,1);
@@ -118,6 +146,8 @@ public class AddDoctorActivity extends AppCompatActivity {
                 dtoDoctor.setDescription(edDescription.getText().toString());
                 dtoDoctor.setBirthday(edBirthDay.getText().toString());
 
+                DtoTimeWork dtoTimeWork = (DtoTimeWork) spTimeWork.getSelectedItem();
+                dtoDoctor.setTimework_id(dtoTimeWork.getId());
                 long res1 = daoDoctor.insertRow(dtoDoctor);
                 if(res1>0){
                     Toast.makeText(this, "Thêm bác sĩ thành công", Toast.LENGTH_SHORT).show();
@@ -129,10 +159,7 @@ public class AddDoctorActivity extends AppCompatActivity {
             else{
                 Toast.makeText(this, "Thất bại", Toast.LENGTH_SHORT).show();
             }
-           
         });
-
-
     }
     public void init(){
         imgDoctor = findViewById(R.id.imgDoctor);
@@ -147,6 +174,7 @@ public class AddDoctorActivity extends AppCompatActivity {
         edUserName = findViewById(R.id.edUserName);
         edDescription = findViewById(R.id.edDescription);
         edBirthDay = findViewById(R.id.edBirthDay);
+        spTimeWork = findViewById(R.id.spTimeWork);
     }
 
     @Override

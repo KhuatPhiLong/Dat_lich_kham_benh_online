@@ -7,6 +7,7 @@ public class DtoDoctor {
     private int service_id;
     private int room_id;
     private String description;
+    private int timework_id;
 
     public static final String nameTable = "tbDoctor";
     public static final String colUser_id = "user_id";
@@ -14,6 +15,7 @@ public class DtoDoctor {
     public static final String colService_id = "service_id";
     public static final String colRoom_id = "room_id";
     public static final String colDescription = "description";
+    public static final String colTimework_id = "timework_id";
 
     public DtoDoctor() {
     }
@@ -25,6 +27,24 @@ public class DtoDoctor {
         this.service_id = service_id;
         this.room_id = room_id;
         this.description = description;
+    }
+
+    public DtoDoctor(int id, int user_id, String birthday, int service_id, int room_id, String description, int timework_id) {
+        this.id = id;
+        this.user_id = user_id;
+        this.birthday = birthday;
+        this.service_id = service_id;
+        this.room_id = room_id;
+        this.description = description;
+        this.timework_id = timework_id;
+    }
+
+    public int getTimework_id() {
+        return timework_id;
+    }
+
+    public void setTimework_id(int timework_id) {
+        this.timework_id = timework_id;
     }
 
     public int getId() {

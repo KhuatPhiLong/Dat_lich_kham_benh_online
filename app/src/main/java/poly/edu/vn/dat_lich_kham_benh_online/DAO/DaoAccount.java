@@ -69,7 +69,7 @@ public class DaoAccount {
             return false;
         }
     }
-    public DtoAccount getDtoUser(int  idUser){
+    public DtoAccount getDtoAccount(int  idUser){
         DtoAccount dtoUser = new DtoAccount();
         String where = "id = ?";
         String[] whereArgs ={idUser+""};

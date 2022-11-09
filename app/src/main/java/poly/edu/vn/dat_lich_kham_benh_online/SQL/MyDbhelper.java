@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDbhelper extends SQLiteOpenHelper {
     public static final String NAME ="Kham_benh_online";
-    public static final int VERSION = 22;
+    public static final int VERSION = 25;
     public MyDbhelper(Context context){
         super(context,NAME,null,VERSION);
     }
@@ -18,7 +18,7 @@ public class MyDbhelper extends SQLiteOpenHelper {
         String sqlAdmin = "INSERT INTO tbAccount VALUES(3,'Admin','Admin','012313','My Admin','Nam','Admin',null)";
         sqLiteDatabase.execSQL(sqlAdmin);
 
-        String sqlDoctor = "CREATE TABLE tbDoctor (id INTEGER NOT NULL,user_id INTEGER NOT NULL REFERENCES tbAccount(id),birthday TEXT NOT NULL, service_id INTEGER NOT NULL REFERENCES tbServices(id),room_id INTEGER NOT NULL REFERENCES tbRooms(id),description TEXT,PRIMARY KEY(id AUTOINCREMENT));";
+        String sqlDoctor = "CREATE TABLE tbDoctor (id INTEGER NOT NULL,user_id INTEGER NOT NULL REFERENCES tbAccount(id),birthday TEXT NOT NULL, service_id INTEGER NOT NULL REFERENCES tbServices(id),room_id INTEGER NOT NULL REFERENCES tbRooms(id),description TEXT, timework_id INTEGER NOT NULL REFERENCES tbTimeWork(id),PRIMARY KEY(id AUTOINCREMENT));";
         sqLiteDatabase.execSQL(sqlDoctor);
 
         String sqlRooms = "CREATE TABLE tbRooms (id INTEGER NOT NULL,name TEXT NOT NULL,location TEXT,PRIMARY KEY(id AUTOINCREMENT));";
@@ -29,6 +29,22 @@ public class MyDbhelper extends SQLiteOpenHelper {
 
         String sqlCategories = "CREATE TABLE tbCategories (id INTEGER NOT NULL,name INTEGER NOT NULL,PRIMARY KEY(id AUTOINCREMENT));";
         sqLiteDatabase.execSQL(sqlCategories);
+
+        String sqlFile = "CREATE TABLE tbFile (id INTEGER,user_id INTEGER REFERENCES tbUser(id),birthday INTEGER,cccd INTEGER,bhyt INTEGER,job INTEGER,email INTEGER,address INTEGER);";
+        sqLiteDatabase.execSQL(sqlFile);
+
+        String sqlTimeWork = "CREATE TABLE  tbTimeWork  (id  INTEGER NOT NULL,session  TEXT NOT NULL,PRIMARY KEY( id  AUTOINCREMENT));";
+        sqLiteDatabase.execSQL(sqlTimeWork);
+
+        String sqlTimeWorkDetail = "CREATE TABLE  tbTimeWorkDetail  (id INTEGER NOT NULL,timework_id  INTEGER NOT NULL REFERENCES tbTimeWork(id),time TEXT NOT NULL,PRIMARY KEY( id  AUTOINCREMENT));";
+        sqLiteDatabase.execSQL(sqlTimeWorkDetail);
+
+        String sqlOrders = "CREATE TABLE tbOrders (id INTEGER NOT NULL,file_id INTEGER NOT NULL REFERENCES tbFile(id),order_time TEXT NOT NULL,order_date TEXT NOT NULL,start_time TEXT NOT NULL,PRIMARY KEY(id AUTOINCREMENT));";
+        sqLiteDatabase.execSQL(sqlOrders);
+
+        String sqlOrderDetail = "CREATE TABLE tbOrderDetail (order_id INTEGER NOT NULL REFERENCES tbOrders(id),doctor_id INTEGER NOT NULL REFERENCES tbDoctor(id));";
+        sqLiteDatabase.execSQL(sqlOrderDetail);
+
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
@@ -37,6 +53,11 @@ public class MyDbhelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbRooms");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbServices");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbCategories");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbTimeWork");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbTimeWorkDetail");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbOrders");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbOrderDetail");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tbFile");
         onCreate(sqLiteDatabase);
     }
 }

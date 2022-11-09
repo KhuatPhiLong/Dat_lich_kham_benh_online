@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import poly.edu.vn.dat_lich_kham_benh_online.R;
 
 public class DoctorViewHolder extends RecyclerView.ViewHolder {
-    public TextView tvNameDoctor,tvNameService,tvNameRoom,tvNameDescription,tvDeleteDoctor,tvUpdateDoctor;
+    public TextView tvNameDoctor,tvNameService,tvNameRoom,tvDescription,tvDeleteDoctor,tvUpdateDoctor;
     public ImageView imgDoctor;
     public DoctorViewHolder(@NonNull View itemView) {
         super(itemView);
         tvNameDoctor = itemView.findViewById(R.id.tvNameDoctor);
         tvNameService = itemView.findViewById(R.id.tvNameService);
         tvNameRoom = itemView.findViewById(R.id.tvNameRoom);
-        tvNameDescription = itemView.findViewById(R.id.tvNameDescription);
+        tvDescription = itemView.findViewById(R.id.tvDescription);
         tvDeleteDoctor = itemView.findViewById(R.id.tvDeleteDoctor);
         tvUpdateDoctor = itemView.findViewById(R.id.tvUpdateDoctor);
         imgDoctor = itemView.findViewById(R.id.imgDoctor);

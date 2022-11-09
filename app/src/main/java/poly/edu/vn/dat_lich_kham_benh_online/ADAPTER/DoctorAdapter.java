@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,10 +48,13 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorViewHolder> {
         daoRoom.open();
 
         DaoService daoService = new DaoService(context);
-        daoAccount.open();
+        daoService.open();
+        
+        DaoDoctor daoDoctor = new DaoDoctor(context);
+        daoDoctor.open();
 
         DtoDoctor dtoDoctor = listDoctor.get(position);
-        DtoAccount dtoAccount = daoAccount.getDtoUser(dtoDoctor.getUser_id());
+        DtoAccount dtoAccount = daoAccount.getDtoAccount(dtoDoctor.getUser_id());
         holder.tvNameDoctor.setText(dtoAccount.getFullName());
         Uri uri = Uri.parse(dtoAccount.getImg());
         holder.imgDoctor.setImageURI(uri);
@@ -61,7 +65,22 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorViewHolder> {
         holder.tvNameService.setText(dtoDoctor.getService_id()+"");
         DtoService dtoService = daoService.getDtoSeriveById(1);
         holder.tvNameService.setText(dtoService.getName());
-
+        holder.tvDescription.setText(dtoDoctor.getDescription());
+        
+        holder.tvDeleteDoctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int res = daoDoctor.deleteRow(dtoDoctor);
+                if(res>0){
+                    listDoctor.remove(dtoDoctor);
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "Xóa bác sĩ thành công", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(context, "Xóa bác sĩ không thành công", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override

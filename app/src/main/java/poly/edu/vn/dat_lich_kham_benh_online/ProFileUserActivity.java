@@ -36,7 +36,7 @@ public class ProFileUserActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("getIdUser",MODE_PRIVATE);
         int idUser = preferences.getInt("idUser",-1);
         //lấy ra đối tượng có idUser
-        DtoAccount getDtoUser = daoUser.getDtoUser(idUser);
+        DtoAccount getDtoUser = daoUser.getDtoAccount(idUser);
         //Gắn dũ liệu
         edEditFullName.setText(getDtoUser.getFullName());
         tvEditPhone.setText(getDtoUser.getPhone());

@@ -29,6 +29,7 @@ public class DaoDoctor {
         val.put(DtoDoctor.colService_id, dtoDoctor.getService_id());
         val.put(DtoDoctor.colRoom_id, dtoDoctor.getRoom_id());
         val.put(DtoDoctor.colDescription, dtoDoctor.getDescription());
+        val.put(DtoDoctor.colTimework_id,dtoDoctor.getTimework_id());
 
         long res = db.insert(DtoDoctor.nameTable, null, val);
         return res;
@@ -47,6 +48,7 @@ public class DaoDoctor {
         val.put(DtoDoctor.colService_id, dtoDoctor.getService_id());
         val.put(DtoDoctor.colRoom_id, dtoDoctor.getRoom_id());
         val.put(DtoDoctor.colDescription, dtoDoctor.getDescription());
+        val.put(DtoDoctor.colTimework_id,dtoDoctor.getTimework_id());
         String[] check = new String[]{dtoDoctor.getId() + ""};
 
         int res = db.update(DtoDoctor.nameTable, val, "id = ?", check);
@@ -64,6 +66,7 @@ public class DaoDoctor {
                 dtoDoctor.setService_id(cs.getInt(3));
                 dtoDoctor.setRoom_id(cs.getInt(4));
                 dtoDoctor.setDescription(cs.getString(5));
+                dtoDoctor.setTimework_id(cs.getInt(6));
 
                 listDoctor.add(dtoDoctor);
                 cs.moveToNext();

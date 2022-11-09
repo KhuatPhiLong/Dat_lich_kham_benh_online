@@ -52,4 +52,15 @@ public class ManagerDoctorActivity extends AppCompatActivity {
         tvAddDoctor = findViewById(R.id.tvAddDoctor);
         rvManagerDoctor = findViewById(R.id.rvManagerDoctor);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listDoctor = daoDoctor.selectAll();
+        //Gắn dữ liệu vào adapter
+        DoctorAdapter doctorAdapter = new DoctorAdapter(listDoctor,this);
+        LinearLayoutManager manager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        rvManagerDoctor.setLayoutManager(manager);
+        rvManagerDoctor.setAdapter(doctorAdapter);
+    }
 }

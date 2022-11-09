@@ -68,7 +68,8 @@ public class DaoService {
         DtoService dtoService = new DtoService();
         String where = "id = ?";
         String[] whererArgs = {idService+""};
-        Cursor cs  =db.query(DtoService.nameTable,null,where,whererArgs,null,null,null);
+        String[] select = new String[]{"*"};
+        Cursor cs  =db.query(DtoService.nameTable,select,where,whererArgs,null,null,null);
         if(cs.moveToFirst()){
             dtoService.setId(cs.getInt(0));
             dtoService.setName(cs.getString(1));
