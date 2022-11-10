@@ -44,4 +44,20 @@ public class DaoOrderDetail {
         }
         return list;
     }
+
+    public ArrayList<DtoOrderDetail> selectAllByIdFile(int idFile){
+        ArrayList<DtoOrderDetail> list = new ArrayList<>();
+        String[] whereArgs = new String[]{idFile+""};
+        String select = "Select order_id  from tbOrderDetail inner join tbOrders on tbOrderDetail.order_id = tbOrders.id  where tbOrders.file_id = ? group by tbOrderDetail.order_id";
+        Cursor cs  =db.rawQuery(select,whereArgs);
+        if(cs.moveToFirst()){
+            while(!cs.isAfterLast()){
+                DtoOrderDetail dtoOrderDetail = new DtoOrderDetail();
+                dtoOrderDetail.setOrder_id(cs.getInt(0));
+                list.add(dtoOrderDetail);
+                cs.moveToNext();
+            }
+        }
+        return list;
+    }
 }
