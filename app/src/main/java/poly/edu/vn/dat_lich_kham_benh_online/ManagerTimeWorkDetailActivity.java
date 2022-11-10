@@ -21,14 +21,14 @@ import java.util.ArrayList;
 
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.SpinnerTimeWorkAdapter;
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.TimeWorkDetailAdapter;
-import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimWork;
+import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimeWorkDetail;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWorkDetail;
 
 public class ManagerTimeWorkDetailActivity extends AppCompatActivity {
     private TextView tvAddTimeWorkDetail;
-    private DaoTimWork daoTimWork;
+    private DaoTimeWork daoTimeWork;
     private DaoTimeWorkDetail daoTimeWorkDetail;
     private RecyclerView rvManagerTimeWorkDetail;
     private TimeWorkDetailAdapter timeWorkDetailAdapter;
@@ -42,9 +42,9 @@ public class ManagerTimeWorkDetailActivity extends AppCompatActivity {
 
 
         //Khởi tạo
-        daoTimWork = new DaoTimWork(this);
+        daoTimeWork = new DaoTimeWork(this);
         //Mở cơ sở dữ liệu
-        daoTimWork.open();
+        daoTimeWork.open();
 
         //Khởi tạo
         daoTimeWorkDetail = new DaoTimeWorkDetail(this);
@@ -74,7 +74,7 @@ public class ManagerTimeWorkDetailActivity extends AppCompatActivity {
                 }
                 Spinner spTimeWork = dialog.findViewById(R.id.spTimeWork);
 
-                ArrayList<DtoTimeWork> listTimeWork = daoTimWork.selectAll();
+                ArrayList<DtoTimeWork> listTimeWork = daoTimeWork.selectAll();
                 SpinnerTimeWorkAdapter spinnerTimeWorkAdapter = new SpinnerTimeWorkAdapter(listTimeWork,ManagerTimeWorkDetailActivity.this);
                 spTimeWork.setAdapter(spinnerTimeWorkAdapter);
 

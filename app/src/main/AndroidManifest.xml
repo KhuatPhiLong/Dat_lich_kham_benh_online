@@ -29,6 +29,12 @@
         android:theme="@style/Theme.Dat_lich_kham_benh_online"
         tools:targetApi="31">
         <activity
+            android:name=".ComfirmOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListDoctorActivity"
             android:exported="false" />
         <activity

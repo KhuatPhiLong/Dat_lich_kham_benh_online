@@ -26,7 +26,7 @@ import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoDoctor;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoRoom;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoService;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoAccount;
-import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimWork;
+import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoDoctor;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoRoom;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoService;
@@ -43,7 +43,7 @@ public class AddDoctorActivity extends AppCompatActivity {
     private DaoService daoService;
     private DaoAccount daoUser;
     private DaoDoctor daoDoctor;
-    private DaoTimWork daoTimWork;
+    private DaoTimeWork daoTimeWork;
     private String uriImg;
     private String TAG = "zzzzzzzzzzzzzzz";
     @Override
@@ -52,9 +52,9 @@ public class AddDoctorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_doctor);
         init();
         //Khởi tạo
-        daoTimWork = new DaoTimWork(this);
+        daoTimeWork = new DaoTimeWork(this);
         //Mở cơ sở dữ liệu
-        daoTimWork.open();
+        daoTimeWork.open();
 
         //Khởi tạo
         daoDoctor = new DaoDoctor(this);
@@ -77,7 +77,7 @@ public class AddDoctorActivity extends AppCompatActivity {
          daoService.open();
 
          //Lấy ra danh sách ca
-        ArrayList<DtoTimeWork> listTimeWork = daoTimWork.selectAll();
+        ArrayList<DtoTimeWork> listTimeWork = daoTimeWork.selectAll();
         //Gắn dữ liệu vào spTimeWork
         SpinnerTimeWorkAdapter spinnerTimeWorkAdapter = new SpinnerTimeWorkAdapter(listTimeWork,this);
         spTimeWork.setAdapter(spinnerTimeWorkAdapter);

@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.SQL.MyDbhelper;
 
-public class DaoTimWork {
+public class DaoTimeWork {
     SQLiteDatabase db;
     MyDbhelper dbhelper;
 
-    public DaoTimWork(Context context){
+    public DaoTimeWork(Context context){
         dbhelper = new MyDbhelper(context);
     }
     public void open(){

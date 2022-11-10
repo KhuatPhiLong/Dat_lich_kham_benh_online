@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.Viewholder.TimeWorkDetailViewHolder;
-import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.Viewholder.TimeWorkViewHolder;
-import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimWork;
+import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimeWorkDetail;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWorkDetail;
@@ -37,11 +36,11 @@ public class TimeWorkDetailAdapter extends RecyclerView.Adapter<TimeWorkDetailVi
 
     @Override
     public void onBindViewHolder(@NonNull TimeWorkDetailViewHolder holder, int position) {
-        DaoTimWork daoTimWork = new DaoTimWork(context);
-        daoTimWork.open();
+        DaoTimeWork daoTimeWork = new DaoTimeWork(context);
+        daoTimeWork.open();
         DtoTimeWorkDetail dtoTimeWorkDetail = listTimeWorkDetail.get(position);
         holder.tvTimeWorkDetail.setText(dtoTimeWorkDetail.getTime());
-        DtoTimeWork dtoTimeWork = daoTimWork.getDtoTimeWork(dtoTimeWorkDetail.getTimework_id());
+        DtoTimeWork dtoTimeWork = daoTimeWork.getDtoTimeWork(dtoTimeWorkDetail.getTimework_id());
         holder.tvTimeWork.setText(dtoTimeWork.getSession());
     }
 

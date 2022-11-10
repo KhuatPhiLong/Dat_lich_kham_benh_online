@@ -19,13 +19,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.TimeWorkAdapter;
-import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimWork;
-import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoCategories;
+import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWork;
 
 public class ManagerTimeWorkActivity extends AppCompatActivity {
     private TextView tvAddTimeWork;
-    private DaoTimWork daoTimWork;
+    private DaoTimeWork daoTimeWork;
     private RecyclerView rvManagerTimeWork;
     private ArrayList<DtoTimeWork> listTimeWork;
     private TimeWorkAdapter timeWorkAdapter;
@@ -37,12 +36,12 @@ public class ManagerTimeWorkActivity extends AppCompatActivity {
         rvManagerTimeWork = findViewById(R.id.rvManagerTimeWork);
         
         //Khởi tạo
-        daoTimWork = new DaoTimWork(this);
+        daoTimeWork = new DaoTimeWork(this);
         //Mở cơ sở dữ liệu
-        daoTimWork.open();
+        daoTimeWork.open();
 
         //Lấy ra danh sách time work
-        listTimeWork = daoTimWork.selectAll();
+        listTimeWork = daoTimeWork.selectAll();
 
         //Gắn dữ liệu vào adapter
         timeWorkAdapter = new TimeWorkAdapter(listTimeWork,this);
@@ -72,7 +71,7 @@ public class ManagerTimeWorkActivity extends AppCompatActivity {
                     DtoTimeWork dtoTimeWork = new DtoTimeWork();
                     dtoTimeWork.setSession(edTimeWork.getText().toString());
                     
-                    long res = daoTimWork.insertRow(dtoTimeWork);
+                    long res = daoTimeWork.insertRow(dtoTimeWork);
                     if(res>0){
                         Toast.makeText(ManagerTimeWorkActivity.this, "Thêm ca làm việc thành công", Toast.LENGTH_SHORT).show();
                     }

@@ -10,14 +10,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
-import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.OrderDoctorAdapter;
-import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoDoctor;
-import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoDoctor;
 import poly.edu.vn.dat_lich_kham_benh_online.ListDoctorActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.R;
 

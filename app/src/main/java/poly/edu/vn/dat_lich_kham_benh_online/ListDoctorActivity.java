@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.OrderDoctorAdapter;
+import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.BookingDoctorAdapter;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoDoctor;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoDoctor;
 
@@ -24,7 +24,7 @@ public class ListDoctorActivity extends AppCompatActivity {
         daoDoctor.open();
 
         ArrayList<DtoDoctor> listDocTor = daoDoctor.selectAll();
-        OrderDoctorAdapter doctorAdapter  =new OrderDoctorAdapter(listDocTor,this);
+        BookingDoctorAdapter doctorAdapter  =new BookingDoctorAdapter(listDocTor,this);
         LinearLayoutManager manager = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
         rvOrderDoctor.setLayoutManager(manager);
         rvOrderDoctor.setAdapter(doctorAdapter);

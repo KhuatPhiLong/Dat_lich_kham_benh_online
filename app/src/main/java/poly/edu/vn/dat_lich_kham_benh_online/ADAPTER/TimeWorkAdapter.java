@@ -19,15 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.Viewholder.TimeWorkViewHolder;
-import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimWork;
+import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoTimeWork;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoTimeWork;
-import poly.edu.vn.dat_lich_kham_benh_online.ManagerTimeWorkActivity;
 import poly.edu.vn.dat_lich_kham_benh_online.R;
 
 public class TimeWorkAdapter extends RecyclerView.Adapter<TimeWorkViewHolder> {
     private ArrayList<DtoTimeWork> listTimeWork = new ArrayList<>();
     private Context context;
-    private DaoTimWork daoTimWork;
+    private DaoTimeWork daoTimeWork;
 
     public TimeWorkAdapter(ArrayList<DtoTimeWork> listTimeWork, Context context) {
         this.listTimeWork = listTimeWork;
@@ -56,8 +55,8 @@ public class TimeWorkAdapter extends RecyclerView.Adapter<TimeWorkViewHolder> {
     }
 
     private void onClickUpdateTimeWork(DtoTimeWork dtoTimeWork, Context context, int index) {
-        daoTimWork = new DaoTimWork(context);
-        daoTimWork.open();
+        daoTimeWork = new DaoTimeWork(context);
+        daoTimeWork.open();
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_add_timework);
@@ -78,7 +77,7 @@ public class TimeWorkAdapter extends RecyclerView.Adapter<TimeWorkViewHolder> {
             public void onClick(View view) {
                 dtoTimeWork.setSession(edTimeWork.getText().toString());
 
-                int res = daoTimWork.updateRow(dtoTimeWork);
+                int res = daoTimeWork.updateRow(dtoTimeWork);
                 if(res>0){
                     listTimeWork.set(index,dtoTimeWork);
                     notifyDataSetChanged();

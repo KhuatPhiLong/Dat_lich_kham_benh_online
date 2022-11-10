@@ -74,4 +74,23 @@ public class DaoDoctor {
         }
         return listDoctor;
     }
+
+    public DtoDoctor selectDtoDoctorById(int idDoctor) {
+        DtoDoctor dtoDoctor = new DtoDoctor();
+        String where = "id = ?";
+        String[] whereArgs = {idDoctor+""};
+        Cursor cs = db.query(DtoDoctor.nameTable, null, where, whereArgs, null, null, null);
+        if (cs.moveToFirst()) {
+
+                dtoDoctor.setId(cs.getInt(0));
+                dtoDoctor.setUser_id(cs.getInt(1));
+                dtoDoctor.setBirthday(cs.getString(2));
+                dtoDoctor.setService_id(cs.getInt(3));
+                dtoDoctor.setRoom_id(cs.getInt(4));
+                dtoDoctor.setDescription(cs.getString(5));
+                dtoDoctor.setTimework_id(cs.getInt(6));
+
+        }
+        return dtoDoctor;
+    }
 }

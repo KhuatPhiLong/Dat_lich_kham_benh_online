@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/drawable/background_order.xml" value="0.2605" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_add_doctor.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_add_file.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_add_serivce.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_comfirm_order.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_file.xml" value="0.3625" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_list_doctor.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_login.xml" value="0.3625" />
@@ -16,6 +18,7 @@
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_manager_service.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_manager_time_work.xml" value="0.3625" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_manager_time_work_detail.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_order.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_pro_file_user.xml" value="0.3484375" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_register.xml" value="0.3625" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/activity_regster_doctor.xml" value="0.3578125" />
@@ -29,6 +32,7 @@
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_add_service.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_add_timework.xml" value="0.3625" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_add_timework_detail.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_order_timeworkdetail.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_update_categories.xml" value="0.3625" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_update_manager_categories.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/dialog_update_manager_rooms.xml" value="0.3578125" />
@@ -41,6 +45,7 @@
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_categories.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_docotr.xml" value="0.23697916666666666" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_doctor.xml" value="0.3578125" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_order.xml" value="0.3567708333333333" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_order_doct.xml" value="0.3567708333333333" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_order_doctor.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_order_timeworkdetail.xml" value="0.3567708333333333" />
@@ -50,6 +55,7 @@
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_sp_room.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_sp_service.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_sp_timework.xml" value="0.3625" />
+        <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_spinner_order_timeworkdetail.xml" value="0.3578125" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_timework.xml" value="0.3625" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/layout/item_timework_detail.xml" value="0.3625" />
         <entry key="..\:/DU_AN_1/Dat_lich_kham_benh_online/app/src/main/res/menu/menu_navibottom.xml" value="0.3625" />

@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Quê quán" />
+        android:hint="Quốc tịch" />
 
     <EditText
         android:id="@+id/edJob"
