@@ -108,11 +108,13 @@ public class AddSerivceActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==1){
-            Uri uri = data.getData();
-            //Lấy ra uri của ảnh
-            uriImg = uri+"";
-            //Gắn ảnh vào imgEditUser
-            imgService.setImageURI(uri);
+            if(data!=null){
+                Uri uri = data.getData();
+                //Lấy ra uri của ảnh
+                uriImg = uri+"";
+                //Gắn ảnh vào imgEditUser
+                imgService.setImageURI(uri);
+            }
         }
     }
     public void init(){

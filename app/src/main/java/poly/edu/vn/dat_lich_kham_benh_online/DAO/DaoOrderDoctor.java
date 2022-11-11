@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoOrderDetail;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoOrderDoctor;
+import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoOrders;
 import poly.edu.vn.dat_lich_kham_benh_online.SQL.MyDbhelper;
 
 public class DaoOrderDoctor {
@@ -22,14 +23,14 @@ public class DaoOrderDoctor {
         db = dbhelper.getWritableDatabase();
     }
     public long insertRow(DtoOrderDoctor dtoOrderDoctor){
-        ContentValues val = new ContentValues();
-        val.put(DtoOrderDoctor.colFile_id,dtoOrderDoctor.getFile_id());
-        val.put(DtoOrderDoctor.colDoctor_id,dtoOrderDoctor.getDoctor_id());
-        val.put(DtoOrderDoctor.colStart_time,dtoOrderDoctor.getStart_time());
+       ContentValues val = new ContentValues();
+       val.put(DtoOrderDoctor.colDoctor_id,dtoOrderDoctor.getDoctor_id());
+       val.put(DtoOrderDoctor.colTotal,dtoOrderDoctor.getTotal());
         val.put(DtoOrderDoctor.colStart_date,dtoOrderDoctor.getStart_date());
-        val.put(DtoOrderDoctor.colTotal,dtoOrderDoctor.getTotal());
+        val.put(DtoOrderDoctor.colFile_id,dtoOrderDoctor.getFile_id());
+        val.put(DtoOrderDoctor.colStart_time,dtoOrderDoctor.getStart_time());
 
-        long res  = db.insert(DtoOrderDoctor.nameTable,null,val);
+        long res= db.insert(DtoOrderDoctor.nameTable,null,val);
         return res;
     }
     public ArrayList<DtoOrderDoctor> selectAll(){
@@ -37,18 +38,32 @@ public class DaoOrderDoctor {
         Cursor cs  =db.query(DtoOrderDoctor.nameTable,null,null,null,null,null,null);
         if(cs.moveToFirst()){
             while(!cs.isAfterLast()){
-                DtoOrderDoctor dtoOrderDoctor  =new DtoOrderDoctor();
+                DtoOrderDoctor dtoOrderDoctor  = new DtoOrderDoctor();
                 dtoOrderDoctor.setId(cs.getInt(0));
                 dtoOrderDoctor.setFile_id(cs.getInt(1));
                 dtoOrderDoctor.setDoctor_id(cs.getInt(2));
                 dtoOrderDoctor.setStart_time(cs.getString(3));
-                dtoOrderDoctor.setStart_time(cs.getString(4));
+                dtoOrderDoctor.setStart_date(cs.getString(4));
                 dtoOrderDoctor.setTotal(cs.getFloat(5));
-
                 list.add(dtoOrderDoctor);
                 cs.moveToNext();
             }
         }
         return list;
+    }
+
+    public DtoOrderDoctor getDtoOrderDoctor() {
+        DtoOrderDoctor dtoOrderDoctor = new DtoOrderDoctor();
+        String select = "SELECT * FROM tbOrderDoctor ORDER by id DESC LIMIT 1";
+        Cursor cs = db.rawQuery(select,null);
+        if (cs.moveToFirst()) {
+            dtoOrderDoctor.setId(cs.getInt(0));
+            dtoOrderDoctor.setFile_id(cs.getInt(1));
+            dtoOrderDoctor.setDoctor_id(cs.getInt(2));
+            dtoOrderDoctor.setStart_time(cs.getString(3));
+            dtoOrderDoctor.setStart_date(cs.getString(4));
+            dtoOrderDoctor.setTotal(cs.getFloat(5));
+        }
+        return dtoOrderDoctor;
     }
 }

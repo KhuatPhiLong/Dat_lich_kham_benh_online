@@ -72,6 +72,8 @@ public class OrderDoctorAdapter extends RecyclerView.Adapter<OrderDoctorViewHold
         holder.tvNameRoom.setText(dtoRoom.getName());
 
         holder.tvPrice.setText(dtoOrderDoctor.getTotal()+"đ");
+        holder.tvIdOder.setText(dtoOrderDoctor.getId()+"");
+
     }
 
     @Override

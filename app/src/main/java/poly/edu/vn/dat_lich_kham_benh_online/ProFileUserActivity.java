@@ -83,11 +83,15 @@ public class ProFileUserActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==1){
-            Uri uri = data.getData();
-            //Lấy ra uri của ảnh
-            uriImg = uri+"";
-            //Gắn ảnh vào imgEditUser
-            imgEditUser.setImageURI(uri);
+            if(data!=null){
+                Uri uri = data.getData();
+                //Lấy ra uri của ảnh
+                uriImg = uri+"";
+                //Gắn ảnh vào imgEditUser
+                imgEditUser.setImageURI(uri);
+            }
+
         }
+
     }
 }

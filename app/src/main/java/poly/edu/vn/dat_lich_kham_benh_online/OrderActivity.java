@@ -165,7 +165,7 @@ public class OrderActivity extends AppCompatActivity {
                 DatePickerDialog dialog = new DatePickerDialog(OrderActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        String date = year + "/" + month + "/" + day;
+                        String date = year + "/" + (month +1)+ "/" + day;
                         tvDate.setText(date);
                     }
                 }, year, month, day);
@@ -179,6 +179,8 @@ public class OrderActivity extends AppCompatActivity {
         //Chọn giờ
         SpinnerOrderTimeWorkDetailAdapter spinnerOrderTimeWorkDetailAdapter = new SpinnerOrderTimeWorkDetailAdapter(listDtoTimeWorkDetail,this);
         spTimeWorkDetail.setAdapter(spinnerOrderTimeWorkDetailAdapter);
+
+
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,8 +193,9 @@ public class OrderActivity extends AppCompatActivity {
                 dtoOrderDoctor.setTotal(dtoService.getPrice());
                 
                 long res = daoOrderDoctor.insertRow(dtoOrderDoctor);
+                DtoOrderDoctor dtoOrderDoctor1 = daoOrderDoctor.getDtoOrderDoctor();
                 if(res>0){
-                    listOrderDoctor.add(dtoOrderDoctor);
+                    listOrderDoctor.add(dtoOrderDoctor1);
                     Intent intent1 =new Intent(getBaseContext(),ComfirmOrderActivity.class);
                     startActivity(intent1);
                 }

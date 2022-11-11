@@ -14,6 +14,7 @@ public class DtoOrderDoctor {
     public static final String colStart_time ="start_time";
     public static final String colStart_date= "start_date";
     public static final String colTotal= "total";
+    public static final String colId= "id";
 
     public DtoOrderDoctor() {
     }
@@ -81,5 +82,17 @@ public class DtoOrderDoctor {
 
     public void setStart_date(String start_date) {
         this.start_date = start_date;
+    }
+
+    @Override
+    public String toString() {
+        return "DtoOrderDoctor{" +
+                "id=" + id +
+                ", file_id=" + file_id +
+                ", doctor_id=" + doctor_id +
+                ", start_time='" + start_time + '\'' +
+                ", start_date='" + start_date + '\'' +
+                ", total=" + total +
+                '}';
     }
 }

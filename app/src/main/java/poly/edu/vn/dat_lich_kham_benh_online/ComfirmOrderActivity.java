@@ -94,14 +94,14 @@ public class ComfirmOrderActivity extends AppCompatActivity {
 
                     long res =daoOrders.inserRow(dtoOrders);
                     DtoOrders dtoOrders1 = daoOrders.getDtoOrder();
-                    Toast.makeText(ComfirmOrderActivity.this, dtoOrders1.getId()+"", Toast.LENGTH_SHORT).show();
-                    
+
                     for(int i=0;i<listOrderDoctor.size();i++){
                         DtoOrderDoctor dtoOrderDoctor = listOrderDoctor.get(i);
+
                         DtoOrderDetail dtoOrderDetail = new DtoOrderDetail();
                         dtoOrderDetail.setOrder_id(dtoOrders1.getId());
-                        dtoOrderDetail.setOrderDoctor_id(dtoOrderDoctor.getDoctor_id());
-                        
+                        dtoOrderDetail.setOrderDoctor_id(dtoOrderDoctor.getId());
+                        Toast.makeText(ComfirmOrderActivity.this, dtoOrderDoctor.toString()+"",Toast.LENGTH_SHORT).show();
                         long res1 = daoOrderDetail.insertRow(dtoOrderDetail);
                     }
                 Toast.makeText(ComfirmOrderActivity.this, "Đặt lịch khám thành công", Toast.LENGTH_SHORT).show();
