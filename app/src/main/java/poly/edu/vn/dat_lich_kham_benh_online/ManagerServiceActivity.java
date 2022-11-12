@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.sax.RootElement;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,18 +25,24 @@ import java.util.ArrayList;
 
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.ServiceAdapter;
 import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.SpinnerCategoriesAdapter;
+import poly.edu.vn.dat_lich_kham_benh_online.ADAPTER.SpinnerRoomAdapter;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoCategories;
+import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoRoom;
 import poly.edu.vn.dat_lich_kham_benh_online.DAO.DaoService;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoCategories;
+import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoRoom;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoService;
 
 public class ManagerServiceActivity extends AppCompatActivity {
     private TextView tvAddService;
     private DaoService daoService;
     private String uriImgService;
+    DaoRoom daoRoom;
+    ArrayList<DtoRoom> listRoom;
     private ArrayList<DtoService> listService;
     private ServiceAdapter serviceAdapter;
     private RecyclerView rvManagerService;
+    SpinnerRoomAdapter adapterRoom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -44,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
             dtoUser.setRole("User");
             long res = daoUser.insertRow(dtoUser);
             if(res>0){
+                finish();
                 Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
             }
             else{

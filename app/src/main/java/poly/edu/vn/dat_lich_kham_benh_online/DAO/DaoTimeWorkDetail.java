@@ -55,7 +55,6 @@ public class DaoTimeWorkDetail {
                 dtoTimeWorkDetail.setId(cs.getInt(0));
                 dtoTimeWorkDetail.setTimework_id(cs.getInt(1));
                 dtoTimeWorkDetail.setTime(cs.getString(2));
-
                 listTimeWorkDetail.add(dtoTimeWorkDetail);
                 cs.moveToNext();
             }

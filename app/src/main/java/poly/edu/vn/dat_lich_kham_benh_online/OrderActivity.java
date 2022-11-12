@@ -191,7 +191,6 @@ public class OrderActivity extends AppCompatActivity {
                 DtoTimeWorkDetail dtoTimeWorkDetail = (DtoTimeWorkDetail) spTimeWorkDetail.getSelectedItem();
                 dtoOrderDoctor.setStart_time(dtoTimeWorkDetail.getTime());
                 dtoOrderDoctor.setTotal(dtoService.getPrice());
-                
                 long res = daoOrderDoctor.insertRow(dtoOrderDoctor);
                 DtoOrderDoctor dtoOrderDoctor1 = daoOrderDoctor.getDtoOrderDoctor();
                 if(res>0){

@@ -40,7 +40,7 @@ public class ManagerCategoriesActivity extends AppCompatActivity {
         //Lấy ra danh sách categories
         listCategories = daoCategories.selectAll();
         //Gắn dữ liệu cho apdter
-        categoriesAdapter = new CategoriesAdapter(listCategories,this);
+        categoriesAdapter = new CategoriesAdapter(listCategories,daoCategories);
         LinearLayoutManager manager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         //Gắn dữ liệu vào rv
         rvManagerCategories.setLayoutManager(manager);
@@ -90,7 +90,7 @@ public class ManagerCategoriesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        categoriesAdapter = new CategoriesAdapter(listCategories,this);
+        categoriesAdapter = new CategoriesAdapter(listCategories,daoCategories);
         LinearLayoutManager manager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         //Gắn dữ liệu vào rv
         rvManagerCategories.setLayoutManager(manager);

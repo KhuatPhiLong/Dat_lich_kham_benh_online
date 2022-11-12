@@ -15,18 +15,9 @@ public class DtoDoctor {
     public static final String colService_id = "service_id";
     public static final String colRoom_id = "room_id";
     public static final String colDescription = "description";
-    public static final String colTimework_id = "timework_id";
+    public static final String colTimeWork = "timework_id";
 
     public DtoDoctor() {
-    }
-
-    public DtoDoctor(int id, int user_id, String birthday, int service_id, int room_id, String description) {
-        this.id = id;
-        this.user_id = user_id;
-        this.birthday = birthday;
-        this.service_id = service_id;
-        this.room_id = room_id;
-        this.description = description;
     }
 
     public DtoDoctor(int id, int user_id, String birthday, int service_id, int room_id, String description, int timework_id) {

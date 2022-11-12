@@ -29,15 +29,16 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder
     private Context context;
     private DaoCategories daoCategories;
 
-    public CategoriesAdapter(ArrayList<DtoCategories> listCategories, Context context) {
+    public CategoriesAdapter(ArrayList<DtoCategories> listCategories, DaoCategories daoCategories) {
         this.listCategories = listCategories;
-        this.context = context;
+        this.daoCategories = daoCategories;
     }
 
     @NonNull
     @Override
     public CategoriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_categories,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_categories,parent,false);
+        context = parent.getContext();
         return new CategoriesViewHolder(view);
     }
 

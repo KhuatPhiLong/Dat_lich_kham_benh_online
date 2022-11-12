@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDbhelper extends SQLiteOpenHelper {
     public static final String NAME ="Kham_benh_online";
-    public static final int VERSION = 33;
+    public static final int VERSION = 32;
     public MyDbhelper(Context context){
         super(context,NAME,null,VERSION);
     }

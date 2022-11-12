@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
+import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoDoctor;
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoService;
 import poly.edu.vn.dat_lich_kham_benh_online.SQL.MyDbhelper;
 
@@ -57,7 +58,6 @@ public class DaoService {
                 dtoService.setPrice(cs.getFloat(2));
                 dtoService.setCategories_id(cs.getInt(3));
                 dtoService.setImg(cs.getString(4));
-
                 listService.add(dtoService);
                 cs.moveToNext();
             }
@@ -70,6 +70,20 @@ public class DaoService {
         String[] whererArgs = {idService+""};
         String[] select = new String[]{"*"};
         Cursor cs  =db.query(DtoService.nameTable,select,where,whererArgs,null,null,null);
+        if(cs.moveToFirst()){
+            dtoService.setId(cs.getInt(0));
+            dtoService.setName(cs.getString(1));
+            dtoService.setPrice(cs.getFloat(2));
+            dtoService.setCategories_id(cs.getInt(3));
+            dtoService.setImg(cs.getString(4));
+            cs.moveToNext();
+        }
+        return dtoService;
+    }
+    public DtoService getDtoSeriveById2 (int idService){
+        DtoService dtoService = new DtoService();
+        String select = "select id, name,price,categories_id,img from tbServices where id = "+idService;
+        Cursor cs = db.rawQuery(select, null);
         if(cs.moveToFirst()){
             dtoService.setId(cs.getInt(0));
             dtoService.setName(cs.getString(1));

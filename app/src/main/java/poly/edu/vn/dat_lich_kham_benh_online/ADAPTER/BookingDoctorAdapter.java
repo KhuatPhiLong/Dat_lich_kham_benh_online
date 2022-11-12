@@ -121,8 +121,11 @@ public class BookingDoctorAdapter extends RecyclerView.Adapter<BookingDoctorView
 
             }
         });
-        Uri uri = Uri.parse(dtoAccount.getImg());
-        holder.imgDoctor.setImageURI(uri);
+        if(dtoAccount.getImg()!=null){
+            Uri uri = Uri.parse(dtoAccount.getImg());
+            holder.imgDoctor.setImageURI(uri);
+        }
+
 
 
     }
