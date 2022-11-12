@@ -48,7 +48,7 @@ public class DaoOrderDetail {
     public ArrayList<DtoOrderDetail> selectAllByIdFile(int idFile){
         ArrayList<DtoOrderDetail> list = new ArrayList<>();
         String[] whereArgs = new String[]{idFile+""};
-        String select = "Select order_id  from tbOrderDetail inner join tbOrders on tbOrderDetail.order_id = tbOrders.id  where tbOrders.file_id = ? group by tbOrderDetail.order_id";
+        String select = "select order_id from tbOrderDetail inner join tbOrderDoctor on tbOrderDetail.orderDoctor_id = tbOrderDoctor.id where tbOrderDoctor.file_id = ? group by order_id";
         Cursor cs  =db.rawQuery(select,whereArgs);
         if(cs.moveToFirst()){
             while(!cs.isAfterLast()){
@@ -60,4 +60,5 @@ public class DaoOrderDetail {
         }
         return list;
     }
+
 }

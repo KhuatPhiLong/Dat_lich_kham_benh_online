@@ -26,11 +26,12 @@ import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoOrders;
 
 public class ComfirmOrderActivity extends AppCompatActivity {
     private RecyclerView rvOrderDoctor;
-    private TextView tvSumPrice,tvAddOrder;
+    private TextView tvSumPrice, tvAddOrder;
     private Button btnComfirmOrder;
     private DaoOrders daoOrders;
     private DaoOrderDetail daoOrderDetail;
     private DaoFile daoFile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class ComfirmOrderActivity extends AppCompatActivity {
         daoOrderDetail = new DaoOrderDetail(this);
         daoOrderDetail.open();
 
-        daoOrders  = new DaoOrders(this);
+        daoOrders = new DaoOrders(this);
         daoOrders.open();
 
         init();
@@ -53,22 +54,22 @@ public class ComfirmOrderActivity extends AppCompatActivity {
         rvOrderDoctor.setAdapter(doctorAdapter);
 
         float total = 0;
-        for(int i=0;i<listOrderDoctor.size();i++){
+        for (int i = 0; i < listOrderDoctor.size(); i++) {
             DtoOrderDoctor dtoOrderDoctor = listOrderDoctor.get(i);
-            total+=dtoOrderDoctor.getTotal();
-    }
-        tvSumPrice.setText(total+"đ");
+            total += dtoOrderDoctor.getTotal();
+        }
+        tvSumPrice.setText(total + "đ");
 
         tvAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(),ListDoctorActivity.class);
+                Intent intent = new Intent(getBaseContext(), ListDoctorActivity.class);
                 startActivity(intent);
             }
         });
         //Lấy ra id uer
-        SharedPreferences preferences = getSharedPreferences("getIdUser",MODE_PRIVATE);
-        int idUser = preferences.getInt("idUser",-1);
+        SharedPreferences preferences = getSharedPreferences("getIdUser", MODE_PRIVATE);
+        int idUser = preferences.getInt("idUser", -1);
 
         //Lấy ra hồ sơ bệnh án
         DtoFile dtoFile = daoFile.getDtoFileByIdAccount(idUser);
@@ -77,38 +78,38 @@ public class ComfirmOrderActivity extends AppCompatActivity {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
-        String date = year+"/"+(month+1)+"/"+day;
+        String date = year + "/" + (month + 1) + "/" + day;
 
         //Lấy ra giờ hiện tại
         int hour = c.get(Calendar.HOUR);
         int minute = c.get(Calendar.MINUTE);
-        String time = hour+":"+minute;
+        String time = hour + ":" + minute;
 
         btnComfirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DtoOrders dtoOrders = new DtoOrders();
-                    dtoOrders.setFile_id(dtoFile.getId());
-                    dtoOrders.setOrder_date(date);
-                    dtoOrders.setOrder_time(time);
+                dtoOrders.setFile_id(dtoFile.getId());
+                dtoOrders.setOrder_date(date);
+                dtoOrders.setOrder_time(time);
 
-                    long res =daoOrders.inserRow(dtoOrders);
-                    DtoOrders dtoOrders1 = daoOrders.getDtoOrder();
+                long res = daoOrders.inserRow(dtoOrders);
+                DtoOrders dtoOrders1 = daoOrders.getDtoOrder();
 
-                    for(int i=0;i<listOrderDoctor.size();i++){
-                        DtoOrderDoctor dtoOrderDoctor = listOrderDoctor.get(i);
+                for (int i = 0; i < listOrderDoctor.size(); i++) {
+                    DtoOrderDoctor dtoOrderDoctor = listOrderDoctor.get(i);
 
-                        DtoOrderDetail dtoOrderDetail = new DtoOrderDetail();
-                        dtoOrderDetail.setOrder_id(dtoOrders1.getId());
-                        dtoOrderDetail.setOrderDoctor_id(dtoOrderDoctor.getId());
-                        Toast.makeText(ComfirmOrderActivity.this, dtoOrderDoctor.toString()+"",Toast.LENGTH_SHORT).show();
-                        long res1 = daoOrderDetail.insertRow(dtoOrderDetail);
-                    }
+                    DtoOrderDetail dtoOrderDetail = new DtoOrderDetail();
+                    dtoOrderDetail.setOrder_id(dtoOrders1.getId());
+                    dtoOrderDetail.setOrderDoctor_id(dtoOrderDoctor.getId());
+                    long res1 = daoOrderDetail.insertRow(dtoOrderDetail);
+                }
                 Toast.makeText(ComfirmOrderActivity.this, "Đặt lịch khám thành công", Toast.LENGTH_SHORT).show();
-                    OrderActivity.listOrderDoctor.clear();
+                OrderActivity.listOrderDoctor.clear();
             }
         });
     }
+
     public void init() {
         rvOrderDoctor = findViewById(R.id.rvOrderDoctor);
         tvSumPrice = findViewById(R.id.tvSumPrice);

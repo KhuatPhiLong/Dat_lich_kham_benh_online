@@ -4,12 +4,12 @@
     android:orientation="horizontal"
     android:layout_height="wrap_content">
     <TextView
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:id="@+id/tvOrderTimeWorkDetail"
         android:padding="5dp"
         android:gravity="center"
         android:layout_width="100dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:background="#EFEDED"
         android:textColor="@color/black"

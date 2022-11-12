@@ -84,6 +84,10 @@ public class AddSerivceActivity extends AppCompatActivity {
 
         //Bắt sự kiện cho nút
         btnSaveService.setOnClickListener(view ->{
+            if(uriImg == null){
+                Toast.makeText(this, "Bạn chưa chọn ảnh", Toast.LENGTH_SHORT).show();
+                return;
+            }
             DtoService dtoService = new DtoService();
             dtoService.setImg(uriImg);
             dtoService.setName(edNameService.getText().toString());

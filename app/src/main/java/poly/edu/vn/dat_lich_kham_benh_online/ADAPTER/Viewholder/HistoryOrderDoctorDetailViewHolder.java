@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import poly.edu.vn.dat_lich_kham_benh_online.R;
 
-public class OrderDoctorViewHolder extends RecyclerView.ViewHolder {
-    public TextView tvNameDoctor,tvNameService,tvNameRoom,tvStartDate,tvStartTime,tvPrice,tvIdOder,tvDeleteOrder;
-    public OrderDoctorViewHolder(@NonNull View itemView) {
+public class HistoryOrderDoctorDetailViewHolder extends RecyclerView.ViewHolder {
+    public TextView tvNameDoctor,tvNameService,tvNameRoom,tvStartDate,tvStartTime,tvPrice;
+    public RecyclerView rvServiceOrder;
+    public HistoryOrderDoctorDetailViewHolder(@NonNull View itemView) {
         super(itemView);
         tvNameDoctor = itemView.findViewById(R.id.tvNameDoctor);
         tvNameService = itemView.findViewById(R.id.tvNameService);
@@ -18,7 +19,6 @@ public class OrderDoctorViewHolder extends RecyclerView.ViewHolder {
         tvStartTime = itemView.findViewById(R.id.tvStartTime);
         tvPrice = itemView.findViewById(R.id.tvPrice);
         tvNameRoom = itemView.findViewById(R.id.tvNameRoom);
-        tvIdOder = itemView.findViewById(R.id.tvIdOder);
-        tvDeleteOrder = itemView.findViewById(R.id.tvDeleteOrder);
+        rvServiceOrder = itemView.findViewById(R.id.rvServiceOrder);
     }
 }

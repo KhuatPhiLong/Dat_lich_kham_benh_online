@@ -26,25 +26,17 @@ public class AddFileActivity extends AppCompatActivity {
     private EditText edBirthDay,edCccd,edCountry,edJob,edEmail,edAddress;
     private DaoFile daoFile;
     private RadioButton rdoYes,rdoNo;
+    private int idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_file);
         init();
-
-        //Khởi tạo
-        daoAccount = new DaoAccount(this);
-        //Mở cơ sở dữ liệu
-        daoAccount.open();
-
-        //Khởi tạo
-        daoFile = new DaoFile(this);
-        //Mở cơ sở dữ liệu
-        daoFile.open();
+        openSql();
 
         //Lấy ra id của tài khoản đăng nhập
         SharedPreferences preferences = getSharedPreferences("getIdUser", Context.MODE_PRIVATE);
-        int idUser = preferences.getInt("idUser", -1);
+        idUser = preferences.getInt("idUser", -1);
         //lấy ra đối tượng có idUser
         DtoAccount getDtoAccount = daoAccount.getDtoAccount(idUser);
 
@@ -57,32 +49,44 @@ public class AddFileActivity extends AppCompatActivity {
         btnSaveFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DtoFile dtoFile = new DtoFile();
-                dtoFile.setUser_id(idUser);
-                dtoFile.setBirthday(edBirthDay.getText().toString());
-                dtoFile.setCccd(edCccd.getText().toString());
-                dtoFile.setCountry(edCountry.getText().toString());
-                if(rdoNo.isChecked()){
-                    dtoFile.setBhyt("Không");
-                }
-                if(rdoYes.isChecked()){
-                    dtoFile.setBhyt("Có");
-                }
-                dtoFile.setJob(edJob.getText().toString());
-                dtoFile.setEmail(edEmail.getText().toString());
-                dtoFile.setAddress(edAddress.getText().toString());
-
-                long res = daoFile.insertRow(dtoFile);
-
-                if(res>0){
-                    Toast.makeText(AddFileActivity.this, "Thêm hồ sơ bệnh án thành công", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(AddFileActivity.this, "Thêm hồ sơ bệnh án không thành công", Toast.LENGTH_SHORT).show();
-                }
-
+               clickSaveFile();
             }
         });
+    }
+    public void clickSaveFile(){
+        DtoFile dtoFile = new DtoFile();
+        dtoFile.setUser_id(idUser);
+        dtoFile.setBirthday(edBirthDay.getText().toString());
+        dtoFile.setCccd(edCccd.getText().toString());
+        dtoFile.setCountry(edCountry.getText().toString());
+        if(rdoNo.isChecked()){
+            dtoFile.setBhyt("Không");
+        }
+        if(rdoYes.isChecked()){
+            dtoFile.setBhyt("Có");
+        }
+        dtoFile.setJob(edJob.getText().toString());
+        dtoFile.setEmail(edEmail.getText().toString());
+        dtoFile.setAddress(edAddress.getText().toString());
+
+        long res = daoFile.insertRow(dtoFile);
+
+        if(res>0){
+            Toast.makeText(AddFileActivity.this, "Thêm hồ sơ bệnh án thành công", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(AddFileActivity.this, "Thêm hồ sơ bệnh án không thành công", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void openSql(){
+        //Khởi tạo
+        daoAccount = new DaoAccount(this);
+        //Mở cơ sở dữ liệu
+        daoAccount.open();
+        //Khởi tạo
+        daoFile = new DaoFile(this);
+        //Mở cơ sở dữ liệu
+        daoFile.open();
     }
     public void init(){
         tvFullName = findViewById(R.id.tvFullName);

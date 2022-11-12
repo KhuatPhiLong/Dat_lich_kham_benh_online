@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -85,7 +86,7 @@ public class BookingDoctorAdapter extends RecyclerView.Adapter<BookingDoctorView
         ArrayList<DtoTimeWorkDetail> listDtoTimeWorkDetail = daoTimeWorkDetail.selectTimeWorkDetailByTimeWorkId(dtoTimeWork.getId());
         //Khoi tao adapter ordertimeworkdetail
         OrderTimeWorkDetailAdapter orderTimeWorkDetailAdapter = new OrderTimeWorkDetailAdapter(listDtoTimeWorkDetail, context);
-        LinearLayoutManager manager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
+        GridLayoutManager manager = new GridLayoutManager(context, 3);
         //Gắn dữ liệu vào rvtimeworkdetail
         holder.rvTimeWorkDetail.setLayoutManager(manager);
         holder.rvTimeWorkDetail.setAdapter(orderTimeWorkDetailAdapter);

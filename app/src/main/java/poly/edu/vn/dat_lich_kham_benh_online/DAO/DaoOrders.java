@@ -59,4 +59,18 @@ public class DaoOrders {
         }
         return dtoOrders;
     }
+
+    public DtoOrders getDtoOrderbyIdOrder(int idOrder) {
+        DtoOrders dtoOrders = new DtoOrders();
+        String where = "id = ?";
+        String[] whereArgs = {idOrder+""};
+        Cursor cs = db.query(DtoOrders.nameTable,null,where,whereArgs,null,null,null);
+        if (cs.moveToFirst()) {
+            dtoOrders.setId(cs.getInt(0));
+            dtoOrders.setFile_id(cs.getInt(1));
+            dtoOrders.setOrder_time(cs.getString(2));
+            dtoOrders.setOrder_date(cs.getString(3));
+        }
+        return dtoOrders;
+    }
 }
