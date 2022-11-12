@@ -94,7 +94,6 @@ public class AddSerivceActivity extends AppCompatActivity {
             dtoService.setPrice(Float.parseFloat(edPriceService.getText().toString()));
             DtoCategories dtoCategories = (DtoCategories) spCategories.getSelectedItem();
             dtoService.setCategories_id(dtoCategories.getId());
-            
             long res = daoService.insertRow(dtoService);
             if(res>0){
                 listServie.clear();

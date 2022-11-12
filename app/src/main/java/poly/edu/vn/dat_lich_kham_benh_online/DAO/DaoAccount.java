@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import poly.edu.vn.dat_lich_kham_benh_online.DTO.DtoAccount;
 import poly.edu.vn.dat_lich_kham_benh_online.SQL.MyDbhelper;
 
@@ -51,6 +53,15 @@ public class DaoAccount {
         val.put(DtoAccount.colImg, objUser.getImg());
         String[] check = new String[]{objUser.getId()+""};
 
+        int res  =db.update(DtoAccount.nameTable,val,"id = ?",check);
+        return res;
+    }
+    public int updateInfor(DtoAccount objUser){
+        ContentValues val = new ContentValues();
+        val.put(DtoAccount.colPhone,objUser.getPhone());
+        val.put(DtoAccount.colFullName, objUser.getFullName());
+        val.put(DtoAccount.colGender, objUser.getGender());
+        String[] check = new String[]{objUser.getId()+""};
         int res  =db.update(DtoAccount.nameTable,val,"id = ?",check);
         return res;
     }
@@ -107,5 +118,27 @@ public class DaoAccount {
         }
         cs.close();
         return dtoUser;
+    }
+    public ArrayList<DtoAccount> getAll(){
+        ArrayList<DtoAccount> list = new ArrayList<>();
+        String select ="select * from tbAccount";
+        Cursor cursor = db.rawQuery(select,null);
+        if(cursor!=null){
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()){
+                DtoAccount obj = new DtoAccount();
+                obj.setId(cursor.getInt(0));
+                obj.setUserName(cursor.getString(1));
+                obj.setPassWord(cursor.getString(2));
+                obj.setPhone(cursor.getString(3));
+                obj.setFullName(cursor.getString(4));
+                obj.setGender(cursor.getString(5));
+                obj.setRole(cursor.getString(6));
+                obj.setImg(cursor.getString(7));
+                list.add(obj);
+                cursor.moveToNext();
+            }
+        }
+        return list;
     }
 }
